@@ -2,6 +2,7 @@
 layout: page
 title: About
 permalink: /about/
+lang: en
 ---
 
 Blog by Dmytro "Boolka" Bulatov. Render Programmer based in Kyiv, Ukraine.

@@ -18,19 +18,31 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Dmytro "Boolka" Bulatov's blog
+title: Boolka's blog
+author:
+  en: Dmytro "Boolka" Bulatov
+  ua: Дмитро "Булка" Булатов
 email: 
-description: >- # this means to ignore newlines until "baseurl:"
-  Technical blog about render tech, programming and other relevant stuff.
+description:
+  en: "Technical blog about GPU Programming, Game Development and other interesting stuff."
+  ua: "Технічний блог про GPU програмування, розробку ігор та інші цікаві речі."
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://blog.boolka.dev" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: dmytro_bulatov
 github_username:  Devaniti
+
+languages: ["en", "ua"]
+language_names:
+  en: "English"
+  ua: "Українська"
+default_lang: "en"
+exclude_from_localization: ["javascript", "images", "css", "public"]
+parallel_localization: false
 
 # Build settings
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-polyglot
 
 # Exclude from processing.
 # The following items will not be processed, by default.
