@@ -5,7 +5,7 @@ permalink: /about/
 lang: ua
 ---
 
-Блог Дмитра "Булки" Булатова. Рендер Программіст з Києва.
+Блог Дмитра "Булки" Булатова. Рендер Программіста з Києва.
 
 Поточна робота:
 * Lead 3D Engineer @ [ZibraAI](https://zibra.ai). Проекти: Zibra Liquid, Zibra Smoke & Fire, Zibra Effects, ZibraVDB
