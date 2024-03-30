@@ -12,7 +12,7 @@ This is the first part of a series about GPU programming with D3D12. This series
 
 ## Intended audience
 
-This series is intended for people who would like an introduction to GPU programming, or who are already familiar with high level graphics API, but want an introduction into a low level one.
+This series is intended for people who would like an introduction to GPU programming, or who are already familiar with high level graphics API, but want an introduction for a low level one.
 
 ## Prerequisites
 
@@ -26,7 +26,7 @@ With that out of the way we can finally get to the introduction.
 
 GPU is short for Graphics Processing Unit. They are a very common piece of hardware that is present in virtually any modern consumer computer/smartphone/game console/etc. In fact, you are most likely relying on one while reading this text right now.
 
-Originally GPUs were designed to solve a specific problem: render 3D graphics. But over the years, as realism of 3D graphics advanced, GPUs became more and more generalized, with modern GPUs often used for computations that are no longer related to graphics: Scientific Simulations, Machine Learning, Cryptocurrency Mining, etc. Using GPUs for general purpose calculations even got its own name: GPGPU.
+Originally GPUs were designed to solve a specific problem: render 3D graphics. But over the years, as realism of 3D graphics advanced, GPUs became more and more generalized, with modern GPUs often used for computations that are no longer related to graphics: Scientific Simulations, Machine Learning, Cryptocurrency Mining, etc.
 
 So, it is worth exploring how exactly are GPUs different from CPUs, why only certain use cases use them, and how to write and run your code on one.
 
@@ -36,7 +36,6 @@ To interface with the GPU, you need to use what’s called a “Graphics API”.
 
 At the time of writing, there are many relevant Graphics APIs:
 
-- OpenGL/OpenGL ES – high level, cross platform API
 - D3D11 – high level, Windows specific API
 - Vulkan – low level, cross platform API
 - D3D12 – low level, Windows specific API
@@ -65,4 +64,4 @@ On the other hand, the most common GPU at the time of writing is RTX 3060. That 
 
 We can see that an average GPU can process over 100 times more tasks in parallel than high end CPUs. This is exactly how GPUs get dramatically higher performance for highly parallel computations, such as rendering 3D graphics.
 
-However, there are computations that are impractical on a GPU. It can’t freely allocate its own memory, it’s the CPU that is responsible for memory management. You don’t have access to disk, network or input. Due to those, and other similar limitations, only certain types of workloads can efficiently run on the GPU.
+However, there are computations that are impractical on a GPU. It can’t freely allocate its own memory, it’s the CPU that is responsible for memory management. You don’t have access to disk, network or input. GPUs can't efficiently run algorithms that are completely sequential and can't be parallelized. Due to those, and other similar limitations, only certain types of workloads can efficiently run on the GPU.
