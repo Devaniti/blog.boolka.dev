@@ -20,6 +20,8 @@ C++ – most Graphics APIs only have native bindings for C and C++. This series 
 
 Math – this series will touch on both compute and graphics capabilities of modern GPUs. To program graphics you’ll need a solid understanding of linear algebra.
 
+Modern GPU - we'll use certain features that are only available on fairly modern GPUs. Supported GPUs are: NVIDIA GeForce RTX 20 series or newer, AMD Radeon RX 6000 series or newer, Intel ARC or newer.
+
 With that out of the way we can finally get to the introduction.
 
 ## Why GPU Programming?
