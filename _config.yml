@@ -20,15 +20,14 @@
 
 title: Boolka's blog
 author:
-  en: Dmytro "Boolka" Bulatov
-  ua: Дмитро "Булка" Булатов
-email: 
+  name:
+    en: Dmytro "Boolka" Bulatov
+    ua: Дмитро "Булка" Булатов
 description:
   en: "Technical blog about GPU Programming, Game Development and other interesting stuff."
   ua: "Технічний блог про GPU програмування, розробку ігор та інші цікаві речі."
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://blog.boolka.dev" # the base hostname & protocol for your site, e.g. http://example.com
-github_username:  Devaniti
 permalink: /:title:output_ext
 
 languages: ["en", "ua"]
@@ -44,6 +43,16 @@ theme: minima
 plugins:
   - jekyll-feed
   - jekyll-polyglot
+
+minima:
+  skin: auto
+  social_links:
+    - platform: github
+      user_url: "https://github.com/Devaniti"
+    - platform: linkedin
+      user_url: "https://www.linkedin.com/in/dmytrobulatov"
+    - platform: twitter
+      user_url: "https://twitter.com/dmytro_bulatov"
 
 # Exclude from processing.
 # The following items will not be processed, by default.

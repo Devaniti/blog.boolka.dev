@@ -9,7 +9,7 @@ source "https://rubygems.org"
 # Happy Jekylling!
 gem "jekyll", "~> 4.3.3"
 # This is the default theme for new Jekyll sites. You may change this to anything you like.
-gem "minima", "~> 2.5"
+gem "minima", git: "https://github.com/jekyll/minima", :ref => '10124515953527c8990a2de99ae4ddb2a81ffee3'
 # If you have any plugins, put them here!
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12"
