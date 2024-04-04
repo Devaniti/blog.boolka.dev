@@ -6,8 +6,6 @@ categories: Introduction_to_GPU_Programming_with_D3D12
 lang: en
 ---
 
-# Introduction to GPU Programming with D3D12: Intro
-
 This is the first part of a series about GPU programming with D3D12. This series will cover how and why you would run code on a GPU, as well as some adjacent topics.
 
 ## Intended audience
