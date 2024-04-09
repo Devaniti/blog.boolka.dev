@@ -8,9 +8,13 @@ lang: en
 
 This is the first part of a series about GPU programming with D3D12. This series will cover how and why you would run code on a GPU, as well as some adjacent topics.
 
+Note that some parts may be updated while whole series still coming out.
+
 ## Intended audience
 
 This series is intended for people who would like an introduction to GPU programming, or who are already familiar with high level graphics API, but want an introduction for a low level one.
+
+This series explicitly *does not* require you to know D3D11, in contrast to many other resources that can be found online.
 
 ## Prerequisites
 
