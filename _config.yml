@@ -23,9 +23,11 @@ author:
   name:
     en: Dmytro "Boolka" Bulatov
     ua: Дмитро "Булка" Булатов
+    ja: ブラトフ「ブルカ」ドミトロ
 description:
   en: "Technical blog about GPU Programming, Game Development and other interesting stuff."
   ua: "Технічний блог про GPU програмування, розробку ігор та інші цікаві речі."
+  ja: "GPUプログラミング、ゲーム開発などに関する技術ブログ。"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://blog.boolka.dev" # the base hostname & protocol for your site, e.g. http://example.com
 permalink: /:title:output_ext
@@ -43,9 +45,13 @@ theme: minima
 plugins:
   - jekyll-feed
   - jekyll-polyglot
+future: true
+sass:
+  sourcemap: never
 
 minima:
   skin: auto
+  date_format: "%Y.%m.%d"
   social_links:
     - platform: github
       user_url: "https://github.com/Devaniti"
@@ -62,14 +68,6 @@ minima:
 # Excluded items can be processed by explicitly listing the directories or
 # their entries' file path in the `include:` list.
 #
-# exclude:
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+exclude:
+  - serve.ps1
+  - build.ps1
