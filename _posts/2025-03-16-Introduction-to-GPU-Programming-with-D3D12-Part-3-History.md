@@ -14,13 +14,13 @@ Note that games in this list may not be the first ones to implement respective t
 
 ## Geometry transformation
 
-Battlezone (1980) used wireframe rendering.
+The Sword of Damocles (1966) used wireframe rendering.
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Ctr54kopo8I?si=EscADUKrUjz3W9kv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/eVUgfUvP4uk?si=ZxPOwv-Rxlqpht2V" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 Objects are represented as points with lines between them. To render them, it accounts for position, rotation and scale of each object, as well as position, rotation and field of view of the camera, to project those points onto a screen. Then it can draw lines between those points to create an illusion of a 3D object.
 
-The major downside of that render is that it is just lines. Objects in front do not obscure objects behind.
+The major downside of this approach is that it is just lines. You can not have multiple objects that block view to one another.
 
 ## Triangles
 
@@ -42,11 +42,13 @@ Ultima Underworld: The Stygian Abyss (1992) used texture mapping.
 
 This allows triangles to not just be solid color filled. This is done by mapping a Texture, which you can think of as a 2D grid of colors, to a triangle. Each vertex is mapped to a point on that texture, and when you draw a triangle, you can interpolate position on a texture based on distance to vertices of a triangle, read the value from that point on a texture and then use that color for the pixel.
 
+Note that there was another game called Catacomb 3D (1991), which used similar technique a year earlier, but it did not allow to move camera up or down, so it wasn't true 3D graphics in the modern sense.
+
 ## Depth Buffer
 
-Quake (1996) used depth buffer.
+Super Mario 64 (1996) used depth buffer.
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/ZHT2TgMX7Rg?si=yVbRU-nClFMBJSQP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/vT3AaQ77ges?si=JO0yX9c9gK3tDEhH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 Up to now you had to sort all objects and triangles back to front to get correct order. But there's another method. What if instead of sorting triangles, we'll just keep track of how far is each pixel from the camera? For that we'll create texture the size of the screen, in which each pixel will store float value corresponding to distance from the camera. That way we can skip the sorting of objects and triangles, as well as get additional information about resulting image that we can later use for some additional effects.
 
@@ -54,27 +56,37 @@ Here's an example of how depth buffer may look. Click for see full resolution im
 
 [![Depth Buffer]({{ site.baseurl }}/images/DepthBuffer.webp)]({{ site.baseurl }}/images/DepthBuffer.png)
 
-Also, since you no longer need to have defined, back to front order of objects and triangles, with this method you can also handle cases of intersecting objects and triangles.
+Also, since you no longer need to have defined back to front order, with this method you can also handle cases of intersecting objects and triangles. In case of Super Mario 64 it allows Mario to jump into the water.
+
+[<img src="{{ site.baseurl }}/images/Super Mario 64 Water.webp" height="448" alt="Mario in water">]({{ site.baseurl }}/images/Super Mario 64 Water.png)
+
+Another interesting thing to look at, is how would the game look like, if it didn't had correct geometry ordering. Since Super Mario 64 relies solely on depth buffer for that, if you disable it, you'll be able to observe the kind of issues you get as a result of incorrect ordering.
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/7mOWO-tZhxY?si=8fgDazD-18uIA2qz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Lighting
 
-Quake (1996) also used shaded lighting.
-
-Let's rehash how you draw a triangle: First you get your vertices, perform certain calculations for each vertex, specifically mapping to points on the screen, find out the set of pixels on the screen that belongs to the triangle, and for each pixel perform calculations required for texture mapping. That's good, but why not perform more computations so we can try getting more realistic results.
-
-What Quake did was calculate lighting per vertex. Since you know the position of vertex in the scene, you can loop over all relevant light sources and for each one calculate how much light does the surface get near the vertex. Sum up results from all lights, and you get lighting for your vertex. Then, when drawing each pixel, in addition to interpolating texture coordinates, interpolate lighting result and you get basic lighting.
-
-Unreal (1998) used per-pixel shaded lighting.
+Unreal (1998) used shaded lighting.
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/J4fJWvckmFQ?si=wU7qFyi12XdbGJep" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-Same idea as what you can see in Quake, but instead of calculating lighting per vertex and then interpolating results, Unreal does calculations per-pixel, which provides more accurate results. Fun fact, this is the first game that runs on an Unreal Engine and is the reason for engine's name.
+Let's rehash how you draw a triangle: First you get your vertices, perform certain calculations for each vertex, specifically mapping to points on the screen, find out the set of pixels on the screen that belongs to the triangle, and for each pixel perform calculations required for texture mapping. That's good, but why not perform more computations so we can try getting more realistic results.
+
+What Unreal did was calculate lighting p er vertex. Since you know the position of vertex in the scene, you can loop over all relevant light sources and for each one calculate how much light does the surface get near the vertex. Sum up results from all lights, and you get lighting for your vertex. Then, when drawing each pixel, in addition to interpolating texture coordinates, interpolate lighting result and you get basic lighting. Fun fact, this is the first game that runs on an Unreal Engine and is the reason for engine's name.
+
+Silent Hill 2 (2004) used per-pixel shaded lighting.
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/UqScuAjj8yI?si=K-Hy36yadXyUwJFi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+Same idea as what you can see in Unreal, but instead of calculating lighting per vertex and then interpolating results, Silent Hill 2 does calculations per-pixel, which provides more accurate results.
+
+On the video you can clearly see the difference between per-vertex shading (used on PS2) and per-pixel shading (used on original Xbox).
 
 ## Shadow Mapping
 
-Oddworld: Munch's Oddysee (2001) used shadow mapping.
+Severance: Blade of Darkness (2001) used shadow mapping.
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Aa_hZKSrck0?si=Vz6Rsdq7HiOl5s86" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/irwzEDLZ2gk?si=h0yBqK1UE43Nsg1e" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 Turns out, you can solve problem of calculating shadow with creative usage of depth buffer. First, you render scene from point of view of light with depth buffer. After that is done, you now have a texture that has all geometry that is directly visible from the light. Any other geometry, that can not be seen from lights point of view would then appear in shadow. Using that texture you can check whether a point on surface is visible or not.
 
@@ -104,6 +116,8 @@ As the name suggest Compute Shaders is a new type of a shader. Unlike Vertex or 
 
 The way it was used in Battlefield: Bad Company 2 is quite interesting. First, all of geometry is rendered, but instead of calculating lighting immediatelly, we save information about each pixel in textures, to calculate lighting later. After all geometry was rendered, we calculate lighting for all pixels with compute shader. One of the benefits for doing that is that you can pre-calculate list of lights that affect each portion of the screen, as by the time all geometry is rendered, you have complete depth buffer and can calculate bounding box of each portion of a screen.
 
+It is important to note that compute shaders can also be used to perform arbitrary, non-graphics calculations. One example would be to fluid simulations. You can run such simulation right in your browser - [Approximate grid SPH by michael0884](https://compute.toys/view/1782). 
+
 ## Hardware accelerated raytracing
 
 Battlefield V (2018) used Hardware accelerated raytracing.
@@ -115,3 +129,7 @@ Up until now, real-time computer graphics used approach of going over all geomet
 ## Why is all of this important?
 
 Despite the fact that the history of real-time graphics spans many decades, all of the same concepts and ideas are still used today. Every single thing described here, is still available and used in practice in modern applications.
+
+# Sources
+
+Some of that info was found on [Ultimate history of video games website](https://web.archive.org/web/20190719053748/https://ultimatehistoryvideogames.jimdo.com/).
