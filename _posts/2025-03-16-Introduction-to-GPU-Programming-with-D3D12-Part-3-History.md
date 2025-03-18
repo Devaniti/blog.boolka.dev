@@ -72,7 +72,7 @@ Unreal (1998) used shaded lighting.
 
 Let's rehash how you draw a triangle: First you get your vertices, perform certain calculations for each vertex, specifically mapping to points on the screen, find out the set of pixels on the screen that belongs to the triangle, and for each pixel perform calculations required for texture mapping. That's good, but why not perform more computations so we can try getting more realistic results.
 
-What Unreal did was calculate lighting p er vertex. Since you know the position of vertex in the scene, you can loop over all relevant light sources and for each one calculate how much light does the surface get near the vertex. Sum up results from all lights, and you get lighting for your vertex. Then, when drawing each pixel, in addition to interpolating texture coordinates, interpolate lighting result and you get basic lighting. Fun fact, this is the first game that runs on an Unreal Engine and is the reason for engine's name.
+What Unreal did was calculate lighting per vertex. Since you know the position of vertex in the scene, you can loop over all relevant light sources and for each one calculate how much light does the surface get near the vertex. Sum up results from all lights, and you get lighting for your vertex. Then, when drawing each pixel, in addition to interpolating texture coordinates, interpolate lighting result and you get basic lighting. Fun fact, this is the first game that runs on an Unreal Engine and is the reason for engine's name.
 
 Silent Hill 2 (2004) used per-pixel shaded lighting.
 
