@@ -54,11 +54,11 @@ Super Mario 64 (1996) використовує буфер глибини (depth 
 
 Ось приклад того, як може виглядати буфер глибини. Натисніть щоб переглянути повне зображення.
 
-[![Буфер Глибини]({{ site.baseurl }}/images/DepthBuffer.webp)]({{ site.baseurl }}/images/DepthBuffer.png)
+[![Буфер Глибини]({{site.baseurl}}/images/DepthBuffer.webp)]({{site.baseurl}}/images/DepthBuffer.png)
 
 Також, оскільки вам більше не потрібно мати визначений порядок геометрії по відстані до камери, цей метод вам також дозволяэ рендерити у випадках перетину об’єктів і трикутників. У випадку Super Mario 64, це дозволило Маріо стрибати у воду.
 
-[<img src="{{ site.baseurl }}/images/Super Mario 64 Water.webp" height="448" alt="Маріо у воді">]({{ site.baseurl }}/images/Super Mario 64 Water.png)
+[<img src="{{site.baseurl}}/images/Super Mario 64 Water.webp" height="448" alt="Маріо у воді">]({{site.baseurl}}/images/Super Mario 64 Water.png)
 
 Ще одна цікава річ, на яку варто поглянути, це те, як би виглядала гра, якби в ній не було правильного порядку геометрії. Оскільки для цього Super Mario 64 покладається виключно на буфер глибини, якщо його вимкнути, ви зможете спостерігати які проблеми виникають у результаті неправильного порядку рендерингу.
 
@@ -92,7 +92,7 @@ Severance: Blade of Darkness (2001) використав shadow mapping.
 
 Ось приклад того, як може виглядати карта тіней. Натисніть щоб переглянути повне зображення.
 
-[![Карта Тіней]({{ site.baseurl }}/images/Shadowmap.webp)]({{ site.baseurl }}/images/Shadowmap.png)
+[![Карта Тіней]({{site.baseurl}}/images/Shadowmap.webp)]({{site.baseurl}}/images/Shadowmap.png)
 
 ## Програмуємі Шейдери (Programmable Shaders)
 
@@ -133,3 +133,5 @@ Battlefield V (2018) використав Апаратне прискорене 
 # Джерела
 
 Частину цієї інформації було знайдено на сайті [Ultimate history of video games website](https://web.archive.org/web/20190719053748/https://ultimatehistoryvideogames.jimdo.com/).
+
+[Наступний пост](Introduction-to-GPU-Programming-with-D3D12-Part-4-API-Basics.html)

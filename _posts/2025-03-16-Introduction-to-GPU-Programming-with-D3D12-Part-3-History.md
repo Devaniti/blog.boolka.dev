@@ -42,7 +42,7 @@ Ultima Underworld: The Stygian Abyss (1992) used texture mapping.
 
 This allows triangles to not just be solid color filled. This is done by mapping a Texture, which you can think of as a 2D grid of colors, to a triangle. Each vertex is mapped to a point on that texture, and when you draw a triangle, you can interpolate position on a texture based on distance to vertices of a triangle, read the value from that point on a texture and then use that color for the pixel.
 
-Note that there was another game called Catacomb 3D (1991), which used similar technique a year earlier, but it did not allow to move camera up or down, so it wasn't true 3D graphics in the modern sense.
+Note that there was another game called Catacomb 3D (1991), which used similar technique a year earlier, but it did not allow moving camera up or down, so it wasn't true 3D graphics in the modern sense.
 
 ## Depth Buffer
 
@@ -54,13 +54,13 @@ Up to now you had to sort all objects and triangles back to front to get correct
 
 Here's an example of how depth buffer may look. Click for see full resolution image.
 
-[![Depth Buffer]({{ site.baseurl }}/images/DepthBuffer.webp)]({{ site.baseurl }}/images/DepthBuffer.png)
+[![Depth Buffer]({{site.baseurl}}/images/DepthBuffer.webp)]({{site.baseurl}}/images/DepthBuffer.png)
 
 Also, since you no longer need to have defined back to front order, with this method you can also handle cases of intersecting objects and triangles. In case of Super Mario 64 it allows Mario to jump into the water.
 
-[<img src="{{ site.baseurl }}/images/Super Mario 64 Water.webp" height="448" alt="Mario in water">]({{ site.baseurl }}/images/Super Mario 64 Water.png)
+[<img src="{{site.baseurl}}/images/Super Mario 64 Water.webp" height="448" alt="Mario in water">]({{site.baseurl}}/images/Super Mario 64 Water.png)
 
-Another interesting thing to look at, is how would the game look like, if it didn't had correct geometry ordering. Since Super Mario 64 relies solely on depth buffer for that, if you disable it, you'll be able to observe the kind of issues you get as a result of incorrect ordering.
+Another interesting thing to look at, is how would the game look like, if it didn't have correct geometry ordering. Since Super Mario 64 relies solely on depth buffer for that, if you disable it, you'll be able to observe the kind of issues you get as a result of incorrect ordering.
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/7mOWO-tZhxY?si=8fgDazD-18uIA2qz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
@@ -92,7 +92,7 @@ Turns out, you can solve problem of calculating shadow with creative usage of de
 
 Here's an example of how such shadowmap can look. Click for see full resolution image.
 
-[![Shadowmap]({{ site.baseurl }}/images/Shadowmap.webp)]({{ site.baseurl }}/images/Shadowmap.png)
+[![Shadowmap]({{site.baseurl}}/images/Shadowmap.webp)]({{site.baseurl}}/images/Shadowmap.png)
 
 ## Programmable Shaders
 
@@ -100,9 +100,9 @@ Nvidia's Tech Demo Chameleon (2001) used programmable shaders
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Qt6Vb09qrrI?si=ctB7SIH2phpU3zcL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-Real-time graphics are only really feasible when rendered by a GPU. But up till this demo, GPUs were not able to perform arbitrary calculations. All of the calculations you needed for simple lighting and shadow map usage were performed by specialized hardware, which were not capable to run arbitrary programs.
+Real-time graphics are only really feasible when rendered by a GPU. But up till this demo, GPUs were not able to perform arbitrary calculations. All calculations you needed for simple lighting and shadow map usage were performed by specialized hardware, which were not capable to run arbitrary programs.
 
-This demo shows one of the first examples of "shaders". Shader is just a program that can run on a GPU. There are multiple types of shaders, but first one to appear are Vertex and Pixel shaders. Vertex shaders are executed per-vertex, and they calculate properties of a vertex the are executed for. While Pixel shaders are executed per-pixel, and in simplest terms, responsible for calculating final color of a pixel.
+This demo shows one of the first examples of "shaders". Shader is just a program that can run on a GPU. There are multiple types of shaders, but first one to appear are Vertex and Pixel shaders. Vertex shaders are executed per-vertex, and they calculate properties of a vertex they are executed for. While Pixel shaders are executed per-pixel, and in the simplest terms, responsible for calculating final color of a pixel.
 
 This demo shows what Pixel shaders can acomplish, specifically how pixel shaders allow surface to change its properties based on certain conditions.
 
@@ -112,9 +112,9 @@ Battlefield: Bad Company 2 (2010) used Compute Shaders.
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/-AxiUMiKGLY?si=OFAJoKVLLUJBJWL4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-As the name suggest Compute Shaders is a new type of a shader. Unlike Vertex or Pixel shaders, the are not tied to graphics directly, you don't need any geometry to start compute shaders. The only thing you need is the shaders itself, and a number of instances to run. That allows for great flexibility of what can be done with those.
+As the name suggest Compute Shaders is a new shader type. Unlike Vertex or Pixel shaders, they are not tied to graphics directly, you don't need any geometry to start compute shaders. The only thing you need is the shaders itself, and a number of instances to run. That allows for great flexibility of what can be done with those.
 
-The way it was used in Battlefield: Bad Company 2 is quite interesting. First, all of geometry is rendered, but instead of calculating lighting immediatelly, we save information about each pixel in textures, to calculate lighting later. After all geometry was rendered, we calculate lighting for all pixels with compute shader. One of the benefits for doing that is that you can pre-calculate list of lights that affect each portion of the screen, as by the time all geometry is rendered, you have complete depth buffer and can calculate bounding box of each portion of a screen.
+The way it was used in Battlefield: Bad Company 2 is quite interesting. First, all geometry is rendered, but instead of calculating lighting immediatelly, we save information about each pixel in textures, to calculate lighting later. After all geometry was rendered, we calculate lighting for all pixels with compute shader. One of the benefits for doing that is that you can pre-calculate list of lights that affect each portion of the screen, as by the time all geometry is rendered, you have complete depth buffer and can calculate bounding box of each portion of a screen.
 
 It is important to note that compute shaders can also be used to perform arbitrary, non-graphics calculations. One example would be to fluid simulations. You can run such simulation right in your browser - [Approximate grid SPH by michael0884](https://compute.toys/view/1782). 
 
@@ -128,8 +128,10 @@ Up until now, real-time computer graphics used approach of going over all geomet
 
 ## Why is all of this important?
 
-Despite the fact that the history of real-time graphics spans many decades, all of the same concepts and ideas are still used today. Every single thing described here, is still available and used in practice in modern applications.
+Despite the fact that the history of real-time graphics spans many decades, all those concepts and ideas are still used today. Every single thing described here, is still available and used in practice in modern applications.
 
 # Sources
 
 Some of that info was found on [Ultimate history of video games website](https://web.archive.org/web/20190719053748/https://ultimatehistoryvideogames.jimdo.com/).
+
+[Next Post](Introduction-to-GPU-Programming-with-D3D12-Part-4-API-Basics.html)

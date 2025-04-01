@@ -1,0 +1,4 @@
+{"rule":"POSSESSIVE_APOSTROPHE","sentence":"^\\QSome of that info was found on Ultimate history of video games website.\\E$"}
+{"rule":"KIND_OF_A","sentence":"^\\QIID is primarily used to dynamically pass the type of an interface.\\E$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qnano-COM"}
+{"rule":"COM_COME","sentence":"^\\QBut if you are already familiar with COM, or will stumble upon materials about COM on the internet, here are important differences between them:\\E$"}

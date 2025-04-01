@@ -84,9 +84,9 @@ You literally can't do that. GPUs are not designed for single threaded problems.
 Several conclusions from those examples:
 
 - Some problems can be solved by both the CPU and the GPU, but the GPU does so much faster
-  - If you need to have high performance, and have this kind of a problem, you have a use case for a GPU
+  - If you need to have high performance, and have such problem, you have a use case for a GPU
 - Some problems can be solved by both the CPU and the GPU, but the GPU can't do so as efficiently as the CPU
-  - Just because you can doesn't mean you should
+  - Just because you can, doesn't mean you should
 - Some problems cannot be solved by GPU
   - You will always need to have part of your program to be executed by the CPU
 
