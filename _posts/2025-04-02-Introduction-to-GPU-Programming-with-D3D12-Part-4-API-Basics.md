@@ -278,7 +278,7 @@ using Microsoft::WRL::ComPtr;
 - `Reset` - If stored pointer is not `nullptr`, decrements reference count, and sets it to `nullptr`
 - `operator&`/`ReleaseAndGetAddressOf` - Performs `Reset`, then returns address of a member that stores the pointer. *This means that after calling this method, the pointer inside will always be `nullptr`.*
 - `Attach` - Performs `Reset`, and stores passed pointer, *without incrementing reference count*.
-- `operator->`/`Get` - Returns raw pointer. `operator->` allows call interface methods directly via `ComPtr`.
+- `operator->`/`Get` - Returns raw pointer. `operator->` allow calling interface methods directly via `ComPtr`.
 - `As` - Performs `QueryInterface` storing result in another `ComPtr`. Passes down return value (`HRESULT`) of `QueryInterface`.
 
 You can see the full list of methods in the [ComPtr documentation](https://learn.microsoft.com/en-us/cpp/cppcx/wrl/comptr-class?view=msvc-170#public-constructors).
